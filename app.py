@@ -16,12 +16,12 @@ def main():
     ]
 
     # dropdown menu
-    currencies_menu_from = ttk.Combobox(window, values=currencies)
-    currencies_menu_from.set("Select base currency:")
+    currencies_menu_from = ttk.Combobox(window, values=currencies, width=13)
+    currencies_menu_from.set("Base currency:")
     currencies_menu_from.pack(pady=5)
 
-    currencies_menu_to = ttk.Combobox(window, values=currencies)
-    currencies_menu_to.set("Select final currency:")
+    currencies_menu_to = ttk.Combobox(window, values=currencies, width=13)
+    currencies_menu_to.set("Final currency:")
     currencies_menu_to.pack(pady=5)
 
     # information entry
@@ -44,7 +44,7 @@ def main():
             final_rates_label.config(text=(f"{amount} {currency_from} = {str(final_rates)} {currency_to}"))
             print(data)
         except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
+            rates_to_1_label.config(text="Invalid input!")
 
     # button to trigger update_output
     refresh_button = tk.Button(window, text="Calculate", command=update_output)
